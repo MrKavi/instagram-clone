@@ -29,6 +29,10 @@ import "./style.scss";
 import Home from "..";
 import { useDispatch, useSelector } from "react-redux";
 import { feeds } from "../../../mock/feeds";
+import { photos } from "../../../mock/photos";
+
+import { Link, Route, Routes } from "react-router-dom";
+import Photos from "../../feeds/photos";
 const drawerWidth = 240;
 
 function DrawerComponent(props) {
@@ -179,13 +183,17 @@ function DrawerComponent(props) {
     </div>
   );
   const feedsData = useSelector((state) => state.feedsReducer);
+  const photosData = useSelector((state) => state.photosReducer);
   const dispatch = useDispatch();
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   React.useEffect(() => {
-    dispatch({ type: "FETCH_EXAMPLE_DATA", payload: feeds });
+    dispatch({ type: "FETCH_FEEDS_DATA", payload: feeds });
+  }, []);
+  React.useEffect(() => {
+    dispatch({ type: "FETCH_PHOTOS_DATA", payload: photos });
   }, []);
 
   return (
@@ -313,7 +321,7 @@ function DrawerComponent(props) {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h4">Stories</Typography>
+          <Typography variant="h5">Stories</Typography>
           <Box
             sx={{
               display: "flex",
@@ -322,7 +330,7 @@ function DrawerComponent(props) {
             }}
           >
             <PlayCircleIcon sx={{ marginRight: "10px" }} />
-            <Typography> Watch All</Typography>
+            <Typography sx={{ fontSize: "14px" }}> Watch All</Typography>
           </Box>
         </Grid>
         <Grid
@@ -335,12 +343,6 @@ function DrawerComponent(props) {
           }}
         >
           <Stories />
-          <Stories />
-          <Stories />
-          <Stories />
-          <Stories />
-          <Stories />
-          <Stories />
         </Grid>
         <Grid
           sx={{
@@ -351,7 +353,7 @@ function DrawerComponent(props) {
             mt: "10px",
           }}
         >
-          <Typography variant="h4">Feeds</Typography>
+          <Typography variant="h5">Feeds</Typography>
           <Box
             sx={{
               display: "flex",
@@ -359,10 +361,19 @@ function DrawerComponent(props) {
               justifyContent: "space-between",
             }}
           >
-            <Typography sx={{ marginRight: "20px", fontWeight: "600" }}>
-              Photos
-            </Typography>
-            <Typography sx={{ fontWeight: "600" }}>Videos</Typography>
+            <Link to="/photos">
+              <Typography
+                sx={{
+                  marginRight: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Photos
+              </Typography>
+            </Link>
+            <Link to="/videos">
+              <Typography sx={{ fontWeight: "600" }}>Videos</Typography>
+            </Link>
           </Box>
           <Box
             sx={{
@@ -393,7 +404,24 @@ function DrawerComponent(props) {
             gridGap: ".5rem",
           }}
         >
-          {feeds && feeds.length && feeds.map((elem) => <Feeds {...elem} />)}
+          <Routes>
+            {feeds && feeds.length ? (
+              <Route
+                path="videos"
+                element={feeds.map((elem) => (
+                  <Feeds {...elem} />
+                ))}
+              />
+            ) : null}
+            {photos && photos.length ? (
+              <Route
+                path="photos"
+                element={photos.map((elem) => (
+                  <Photos {...elem} />
+                ))}
+              />
+            ) : null}
+          </Routes>
         </Grid>
       </Box>
     </Box>
