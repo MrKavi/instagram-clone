@@ -8,15 +8,16 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
+import NearMeIcon from "@mui/icons-material/NearMe";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
+import AppsIcon from "@mui/icons-material/Apps";
+import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LoginIcon from "@mui/icons-material/Login";
 import SearchIcon from "@mui/icons-material/Search";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -47,7 +48,7 @@ function DrawerComponent(props) {
     <div>
       <Grid
         sx={{
-          mt: "10px",
+          mt: "5px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -82,7 +83,7 @@ function DrawerComponent(props) {
           sx={{
             width: "100px",
             height: "100px",
-            mt: "20px",
+            mt: "18px",
             offset: 1,
             border: "1px solid #e619b6",
           }}
@@ -156,30 +157,124 @@ function DrawerComponent(props) {
           </Box>
         </Grid>
       </Grid>
-      <Toolbar />
-      <List
+
+      <Grid
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          ml: "18px",
+          mt: 3,
         }}
       >
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton sx={{ color: "black" }}>
-              <ListItemIcon>
-                {index % 2 === 0 ? (
-                  <InboxIcon sx={{ color: "#e619b6" }} />
-                ) : (
-                  <MailIcon sx={{ color: "#e619b6" }} />
-                )}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+        <List
+          sx={{
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "start",
+          }}
+        >
+          <AppsIcon sx={{ fontSize: "30px", color: "#d415a4" }} />
+          <Typography
+            sx={{ ml: 1, color: "black", fontSize: "15px", fontWeight: "600" }}
+          >
+            Feeds
+          </Typography>
+        </List>
+        <List
+          sx={{
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "start",
+          }}
+        >
+          <NotificationsIcon sx={{ fontSize: "30px", color: "black" }} />
+          <Typography
+            sx={{ ml: 1, color: "black", fontSize: "15px", fontWeight: "600" }}
+          >
+            Notification
+          </Typography>
+        </List>
+        <List
+          sx={{
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "start",
+          }}
+        >
+          <MailIcon sx={{ fontSize: "30px", color: "black" }} />
+          <Typography
+            sx={{ ml: 1, color: "black", fontSize: "15px", fontWeight: "600" }}
+          >
+            Mails
+          </Typography>
+        </List>
+        <List
+          sx={{
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "start",
+          }}
+        >
+          <NearMeIcon sx={{ fontSize: "30px", color: "black" }} />
+          <Typography
+            sx={{ ml: 1, color: "black", fontSize: "15px", fontWeight: "600" }}
+          >
+            Direct
+          </Typography>
+        </List>
+        <List
+          sx={{
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "start",
+          }}
+        >
+          <SignalCellularAltIcon sx={{ fontSize: "30px", color: "black" }} />
+          <Typography
+            sx={{ ml: 1, color: "black", fontSize: "15px", fontWeight: "600" }}
+          >
+            Status
+          </Typography>
+        </List>
+        <List
+          sx={{
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "start",
+          }}
+        >
+          <SettingsIcon sx={{ fontSize: "30px", color: "black" }} />
+          <Typography
+            sx={{ ml: 1, color: "black", fontSize: "15px", fontWeight: "600" }}
+          >
+            Settings
+          </Typography>
+        </List>
+        <Divider />
+        <List
+          sx={{
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "start",
+          }}
+        >
+          <LoginIcon sx={{ fontSize: "30px", color: "black" }} />
+          <Typography
+            sx={{ ml: 1, color: "black", fontSize: "15px", fontWeight: "600" }}
+          >
+            Logout
+          </Typography>
+        </List>
+        <Divider />
+        <Typography sx={{ fontSize: "10px" }}>@Copyrights-kv_gasyal</Typography>
+      </Grid>
     </div>
   );
   const feedsData = useSelector((state) => state.feedsReducer);
@@ -253,7 +348,7 @@ function DrawerComponent(props) {
               <Button
                 sx={{
                   color: "white",
-                  backgroundColor: "#e619b6",
+                  backgroundColor: "#c7149a",
                   boxShadow: "none",
                 }}
                 variant="contained"
@@ -321,7 +416,9 @@ function DrawerComponent(props) {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h5">Stories</Typography>
+          <Typography sx={{ fontWeight: "600" }} variant="h6">
+            Stories
+          </Typography>
           <Box
             sx={{
               display: "flex",
@@ -330,7 +427,10 @@ function DrawerComponent(props) {
             }}
           >
             <PlayCircleIcon sx={{ marginRight: "10px" }} />
-            <Typography sx={{ fontSize: "14px" }}> Watch All</Typography>
+            <Typography sx={{ fontSize: "13px", fontWeight: "600" }}>
+              {" "}
+              Watch All
+            </Typography>
           </Box>
         </Grid>
         <Grid
@@ -353,7 +453,9 @@ function DrawerComponent(props) {
             mt: "10px",
           }}
         >
-          <Typography variant="h5">Feeds</Typography>
+          <Typography sx={{ fontWeight: "600" }} variant="h6">
+            Feeds
+          </Typography>
           <Box
             sx={{
               display: "flex",
@@ -361,7 +463,7 @@ function DrawerComponent(props) {
               justifyContent: "space-between",
             }}
           >
-            <Link to="/photos">
+            <Link style={{ textDecoration: "none" }} to="/photos">
               <Typography
                 sx={{
                   marginRight: "20px",
@@ -371,7 +473,7 @@ function DrawerComponent(props) {
                 Photos
               </Typography>
             </Link>
-            <Link to="/videos">
+            <Link style={{ textDecoration: "none" }} to="/videos">
               <Typography sx={{ fontWeight: "600" }}>Videos</Typography>
             </Link>
           </Box>
@@ -387,11 +489,15 @@ function DrawerComponent(props) {
                 display: "flex",
                 alignItems: "center",
                 marginRight: "10px",
+                fontWeight: "600",
+                fontSize: "13px",
               }}
             >
-              <ThumbUpIcon /> Likes
+              <ThumbUpIcon sx={{ mr: 1 }} /> Likes
             </Typography>
-            <Typography>Popular</Typography>
+            <Typography sx={{ fontWeight: "600", fontSize: "13px" }}>
+              Popular
+            </Typography>
           </Box>
         </Grid>
         <Grid

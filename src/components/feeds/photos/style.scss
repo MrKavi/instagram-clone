@@ -1,9 +1,14 @@
 .photos-container {
-  position: relative;
-  .photo-content {
-    position: absolute;
-    top: 0;
-    padding: 10px;
-    color: black;
+  .photos {
+    position: relative;
+    width: "350px";
+    height: "350px";
+    .photo-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px;
+      color: black;
+    }
   }
 }
