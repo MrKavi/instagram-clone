@@ -1,0 +1,7 @@
+.story-avtar {
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  .story-avtar:hover {
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 10px #ccc;
+  }
+}

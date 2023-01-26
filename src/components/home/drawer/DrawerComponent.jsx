@@ -34,6 +34,8 @@ import { photos } from "../../../mock/photos";
 
 import { Link, Route, Routes } from "react-router-dom";
 import Photos from "../../feeds/photos";
+import SearchBox from "../../../shared/search/Search";
+import Search from "../../../shared/search/Search";
 const drawerWidth = 240;
 
 function DrawerComponent(props) {
@@ -64,6 +66,7 @@ function DrawerComponent(props) {
             marginRight: "3px",
             width: "50px",
             height: "50px",
+            mr: 2,
           }}
           image="https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266__340.jpg"
           alt="Live from space album cover"
@@ -79,17 +82,34 @@ function DrawerComponent(props) {
           justifyContent: "center",
         }}
       >
-        <Avatar
+        <Box
           sx={{
-            width: "100px",
-            height: "100px",
-            mt: "18px",
-            offset: 1,
+            padding: "5px",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
             border: "1px solid #e619b6",
+            transition:
+              "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            ":hover": {
+              boxShadow: "0px 0px 10px blue",
+              transition:
+                "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            },
           }}
-          alt="Travis Howard"
-          src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202212/avatar-the-way-of-water_1200x768-sixteen_nine.jpeg?size=1200:675"
-        />
+        >
+          <Avatar
+            sx={{
+              width: "100px",
+              height: "100px",
+              offset: 1,
+            }}
+            alt="Travis Howard"
+            src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202212/avatar-the-way-of-water_1200x768-sixteen_nine.jpeg?size=1200:675"
+          />
+        </Box>
+
         <Typography sx={{ mt: 1 }}>Avtar Name</Typography>
         <Typography sx={{ mt: "1px", color: "gray", fontSize: "13px" }}>
           @Name
@@ -164,6 +184,7 @@ function DrawerComponent(props) {
           flexDirection: "column",
           ml: "18px",
           mt: 3,
+          mr: "18px",
         }}
       >
         <List
@@ -172,6 +193,11 @@ function DrawerComponent(props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "start",
+            ":hover": {
+              boxShadow: "0px 0px 10px",
+              transition:
+                "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            },
           }}
         >
           <AppsIcon sx={{ fontSize: "30px", color: "#d415a4" }} />
@@ -183,6 +209,11 @@ function DrawerComponent(props) {
         </List>
         <List
           sx={{
+            ":hover": {
+              boxShadow: "0px 0px 10px",
+              transition:
+                "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            },
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -198,6 +229,11 @@ function DrawerComponent(props) {
         </List>
         <List
           sx={{
+            ":hover": {
+              boxShadow: "0px 0px 10px",
+              transition:
+                "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            },
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -213,6 +249,11 @@ function DrawerComponent(props) {
         </List>
         <List
           sx={{
+            ":hover": {
+              boxShadow: "0px 0px 10px",
+              transition:
+                "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            },
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -228,6 +269,11 @@ function DrawerComponent(props) {
         </List>
         <List
           sx={{
+            ":hover": {
+              boxShadow: "0px 0px 10px",
+              transition:
+                "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            },
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -243,6 +289,11 @@ function DrawerComponent(props) {
         </List>
         <List
           sx={{
+            ":hover": {
+              boxShadow: "0px 0px 10px",
+              transition:
+                "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            },
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -259,6 +310,11 @@ function DrawerComponent(props) {
         <Divider />
         <List
           sx={{
+            ":hover": {
+              boxShadow: "0px 0px 10px",
+              transition:
+                "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            },
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -326,16 +382,7 @@ function DrawerComponent(props) {
               margin: "5px",
             }}
           >
-            <Box sx={{ mr: "5px", display: "flex", alignItems: "center" }}>
-              <TextField
-                size="small"
-                variant="outlined"
-                sx={{
-                  width: "400px",
-                }}
-              />
-              <SearchIcon sx={{ marginLeft: "-30px", color: "black" }} />
-            </Box>
+            <Search />
             <Grid
               sx={{
                 display: "flex",
